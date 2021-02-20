@@ -1,0 +1,91 @@
+@import '~font-awesome/scss/font-awesome.scss';
+@import './app/styles/shared';
+
+// Fonts //
+@font-face {
+  font-family: cookie;
+  src: url(assets/fonts/Cookie-Regular.ttf) format("opentype");
+}
+
+body {
+  background-image: url("./assets/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'cookie';
+  image-rendering: -webkit-optimize-contrast;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.alert {
+  &.alert-danger {
+    color: $alertColor;
+    font-weight: normal;
+    font-size: 13px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 2px -1px 3px black;
+  }
+}
+
+[mat-button] {
+  background: $buttonBackgroundColor;
+  border: 1px solid $buttonBorderColor;
+  padding: 5px 15px 5px 15px;
+  color: $buttonColor;
+  box-shadow: inset -1px -1px 3px   $buttonBoxShadowColor;
+  -moz-box-shadow: inset -1px -1px 3px  $buttonBoxShadowColor;
+  -webkit-box-shadow: inset -1px -1px 3px  $buttonBoxShadowColor;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $buttonHoverBackgroundColor !important;
+    color: $buttonHoverColor !important;
+    transform: scale(1.2);
+    transition: all 1s;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    &:hover {
+      color:  $buttonDisabledBackgroundColor !important;
+      background:  $buttonDisabledColor !important;
+    }
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $scrollbarTrackColor; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $scrollbarThumbColor;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $scrollbarThumbHoverColor;
+}
+
+.pop-over {
+  background: $scrollbarThumbHoverColor;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: 'cookie';
+  font-size: 2vw;
+}

@@ -1,0 +1,59 @@
+<loader *ngIf="isLoading"></loader>
+
+<div class="form-container" *ngIf="!isLoading">
+    <form class="form" (ngSubmit)="onClickSubmit()" [formGroup]="recipeForm">
+        <fieldset>
+            <legend> Recipe Data </legend>
+            <label for="name"><span> Name <span class="required" required>*</span></span><input type="text"
+                    class="input-field" name="name" value="" formControlName="name" /></label>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                    Name is required.
+                </div>
+                <div *ngIf="name.errors.minlength">
+                    Name must be at least 4 characters long.
+                </div>
+            </div>
+            <label for="url"><span> Url </span><input type="url" class="input-field" name="url" value=""
+                    placeholder="Url with the recipe information" formControlName="url" (keydown.enter)="toggleUrl($event)"
+                    (click)="navigateToUrl()" #urlInput triggers="mouseenter:mouseleave"
+                    ngbPopover="press enter on the input to display the link and to edit" placement="top"
+                    popoverClass="pop-over" /></label>
+            <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alert alert-danger">
+                <div *ngIf="url.errors.urlInValid">
+                    Invalid url.
+                </div>
+            </div>
+            <label for="Description"><span> Description </span><input type="text" class="input-field" name="Description"
+                    value="" formControlName="description" placeholder="Recipe description"/></label>
+
+            <div>
+                <button mat-button type="button" (click)="filePicker.click()"> Pick Image </button>
+                <input type="file" #filePicker (change)="onImagePicked($event)">
+            </div>
+
+            <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && recipeForm.get('image').valid">
+                <img [src]="imagePreview" [alt]="recipeForm.value.title">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend> Recipe Details </legend>
+            <label for="ingredients"><span> Ingredients <span class="required">*</span></span><textarea
+                    name="ingredients" class="textarea-field" formControlName="ingredients"></textarea></label>
+
+            <div *ngIf="ingredients.invalid && (ingredients.dirty || ingredients.touched)" class="alert alert-danger">
+                <div *ngIf="ingredients.errors.required">
+                    Ingredeients are required.
+                </div>
+            </div>
+
+
+            <label for="instructions"><span> Instructions </span><textarea name="instructions" class="textarea-field"
+                    formControlName="instructions" placeholder="Instructions appear in the url"></textarea></label>
+
+            <label><span> </span><input type="submit" value="Submit" [disabled]="!recipeForm.valid"
+                    mat-button /></label>
+        </fieldset>
+    </form>
+</div>

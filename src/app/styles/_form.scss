@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Form styles
+   ========================================================================== */
+.form-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    
+    .form {
+        width: 100%;
+        margin: 5vw;
+    }
+}
+.form-container label{
+	display: block;
+	margin-bottom: 10px;
+}
+.form-container label > span {
+	float: left;
+	width: 100px;
+	color: $inputTextColor;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px $inputTextShadowColor;
+}
+.form-container fieldset{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid $fieldsetBorderColor;
+	padding: 20px;
+	box-shadow: inset 0px 0px 15px $fieldsetBoxShadowColor;
+	-moz-box-shadow: inset 0px 0px 15px $fieldsetBoxShadowColor;
+	-webkit-box-shadow: inset 0px 0px 15px $fieldsetBoxShadowColor;
+}
+.form-container fieldset legend{
+	color:  $legendColor;
+	border-top: 1px solid $legendBorderColor;
+	border-left: 1px solid $legendBorderColor;
+	border-right: 1px solid $legendBorderColor;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	background: $legendBackgroundColor;
+	padding: 0px 8px 3px 8px;
+	box-shadow: -0px -1px 2px  $legendBoxShadowColor;
+	-moz-box-shadow:-0px -1px 2px  $legendBoxShadowColor;
+	-webkit-box-shadow:-0px -1px 2px  $legendBoxShadowColor;
+	font-weight: normal;
+	font-size: 12px;
+}
+.form-container textarea{
+	width:250px;
+	height:100px;
+}
+.form-container input[type=text],
+.form-container input[type=date],
+.form-container input[type=datetime],
+.form-container input[type=number],
+.form-container input[type=search],
+.form-container input[type=time],
+.form-container input[type=url],
+.form-container input[type=email],
+.form-container input[type=password],
+.form-container select, 
+.form-container textarea {
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid $inputBorderColor;
+	outline: none;
+	color: $inputColor;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px $inputBoxShadowColor;
+	-moz-box-shadow: inset 1px 1px 4px $inputBoxShadowColor;
+	-webkit-box-shadow: inset 1px 1px 4px $inputBoxShadowColor;
+	background: $inputBackgroundColor;
+    width: 75%;
+	border-radius: 10px;
+	
+	&.url-link {
+		color:  $urlLinkColor;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+.form-container  input[type=submit],
+.form-container  input[type=button]
+ {
+	background: $buttonBackgroundColor;
+	border: 1px solid $buttonBorderColor;
+	padding: 5px 15px 5px 15px;
+	color: $buttonColor;
+	box-shadow: inset -1px -1px 3px $buttonBoxShadowColor;
+	-moz-box-shadow: inset -1px -1px 3px $buttonBoxShadowColor;
+	-webkit-box-shadow: inset -1px -1px 3px $buttonBoxShadowColor;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;	
+	font-weight: bold;
+	cursor: pointer;
+    
+    &:disabled {
+	background: $buttonDisabledBackgroundColor;
+        color:  $buttonDisabledColor;
+        border: unset;
+        outline: none;
+		box-shadow: none;
+		cursor: default;
+    }
+}
+
+.required{
+	color: $alertColor;
+	font-weight:normal;
+}
+
+input[type=checkbox] {
+	margin: 0 0 0px 15px;
+}
+
+
+

@@ -1,0 +1,61 @@
+<loader *ngIf="isLoading"></loader>
+
+<div class="form-container" *ngIf="!isLoading">
+    <form class="form" (ngSubmit)="onSignup()" [formGroup]="signupForm">
+        <fieldset>
+            <legend> Sign up </legend>
+            <label for="userName"><span> User Name <span class="required" required>*</span></span><input type="text"
+                    class="input-field" name="userName" value="" formControlName="userName" /></label>
+            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+                <div *ngIf="userName.errors.required">
+                    User Name is required.
+                </div>
+            </div>
+            <label for="email"><span> Email <span class="required" required>*</span></span><input type="text"
+                    class="input-field" name="userName" value="" formControlName="email" /></label>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors.required">
+                    Email is required.
+                </div>
+
+                <div *ngIf="email.errors.emailInValid">
+                    The email is not valid.
+                </div>
+            </div>
+            <label for="password"><span> Password <span class="required" required>*</span></span><input type="password"
+                    class="input-field" name="password" value="" formControlName="password" id="password"/></label>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    Password is required.
+                </div>
+
+                <div *ngIf="password.errors.passwordInValid">
+                    The password should contain at least 8 characters
+                    at least one capital letter, at least one number
+                    and at least one lowercase letter.
+                </div>
+            </div>
+
+            <label for="showPassword"><span> Show Password</span><input type="checkbox"
+                class="input-field" name="showPassword" value="" (click)="showPassword('password', 'password')"/>
+                </label>
+
+            <label for="passwordRetype"><span> Type Again <span class="required" required>*</span></span><input
+                    type="password" class="input-field" name="passwordRetype" value=""
+                    formControlName="passwordRetype" id="passwordRetype"/></label>
+            <div *ngIf="passwordRetype.invalid && (passwordRetype.dirty || passwordRetype.touched)"
+                class="alert alert-danger">
+                <div *ngIf="passwordRetype.errors.passwordInValid">
+                    The typed passwords do not match.
+                </div>
+            </div>
+
+            <label for="showPassword"><span> Show Password</span><input type="checkbox"
+                class="input-field" name="showPassword" value="" (click)="showPassword('passwordRetype', 'password')"/>
+            </label>
+            
+            <label><span> </span><input type="submit" value="Submit" [disabled]="!signupForm.valid" mat-button/></label>
+        </fieldset>
+    </form>
+</div>
+

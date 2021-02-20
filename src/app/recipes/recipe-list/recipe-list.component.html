@@ -1,0 +1,28 @@
+<loader *ngIf="isLoading"></loader>
+
+<div class="list-container" [ngClass]="{'hidden': isLoading }"> 
+   <div class="paginator-wrapper">
+      <mat-paginator [length]="totalRecipes" [pageSize]="recipesPerPage" [pageSizeOptions]="pageSizeOptions"
+         (page)="onChangedPage($event)" *ngIf="recipes.length > 0"></mat-paginator>
+   </div>
+
+   <div class="search-container"> 
+      <label for="search"><span> Search: </span><input class="short-input" type="text"
+         class="input-field" name="name" value="" (input)="serachValue($event)"/></label>
+   </div>
+
+    <div class="wrapper">
+      <div class="item" *ngFor="let recipe of recipes; let i = index" [routerLink]="['/edit', recipe.id]"> 
+         <span class="content"> {{ recipe.name }} </span> 
+
+         <div class="recipe-image">
+            <img [src]="recipe.imagePath || '../../assets/images/recipe.jpg'" [alt]="recipe.name" class="image">
+          </div>
+
+         <i class="fa fa-times-circle close" (click)="deleteItem($event, recipe.id)"></i>
+      </div>
+
+     <p class="info-text mat-body-1" *ngIf="recipes.length === 0">No recipes added yet!</p>
+   </div>
+</div>
+

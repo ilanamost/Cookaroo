@@ -1,0 +1,40 @@
+<loader *ngIf="isLoading"></loader>
+
+<div class="form-container" *ngIf="!isLoading">
+    <form class="form" (ngSubmit)="onLogin()" [formGroup]="loginForm">
+        <fieldset>
+            <legend> login </legend>
+            <label for="email"><span> Email <span class="required" required>*</span></span><input type="text"
+                    class="input-field" name="email" value="" formControlName="email" /></label>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors.required">
+                    Email is required.
+                </div>
+
+                <div *ngIf="email.errors.emailInValid">
+                    The email is not valid.
+                </div>
+            </div>
+            <label for="password"><span> Password <span class="required" required>*</span></span><input type="password"
+                    class="input-field" name="password" value="" formControlName="password" id="password"/></label>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    Password is required.
+                </div>
+
+                <div *ngIf="password.errors.passwordInValid">
+                    The password should contain at least 8 characters
+                    at least one capital letter, at least one number
+                    and at least one lowercase letter.
+                </div>
+            </div>
+
+            <label for="showPassword"><span> Show Password</span><input type="checkbox"
+                class="input-field" name="showPassword" value="" (click)="showPassword('password', 'password')"/>
+                </label>
+
+            <label><span> </span><input type="submit" value="Submit" [disabled]="!loginForm.valid" mat-button/></label>
+        </fieldset>
+    </form>
+</div>
+

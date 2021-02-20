@@ -1,0 +1,85 @@
+<div class="header">
+    <div *ngIf="viewMobile then mobileHeader else desktopHeader"></div>
+
+    <ng-template #desktopHeader>
+        <nav class="header-container">
+            <img src="../../assets/images/cookarooLogo.png" class="logo" />
+
+            <ul class="header-items">
+                <li class="item">
+                    <a class="link" [routerLink]="['/']" *ngIf="userIsAuthenticated">
+                        home
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a class="link" [routerLink]="['/create']" *ngIf="userIsAuthenticated">
+                        add recepie
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a class="link" [routerLink]="['/auth/login']" *ngIf="!userIsAuthenticated">
+                        login
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a class="link" [routerLink]="['/auth/signup']" *ngIf="!userIsAuthenticated">
+                        signup
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a class="link" [routerLink]="['/auth/login']" *ngIf="userIsAuthenticated" (click)="onLogout()">
+                        signout
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                        <span class="empty"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <span *ngIf="userName" class="user-name"> User name: {{ userName }} </span>
+        </nav>
+    </ng-template>
+
+    <ng-template #mobileHeader>
+        <nav>
+            <div class="header-mobile-container">
+                 <img src="../../assets/images/cookarooLogo.png" class="logo" />
+                
+                <div id="header-items">
+                    <a class="item" [routerLink]="['/']" *ngIf="userIsAuthenticated"> home </a>
+                    <a class="item" [routerLink]="['/create']" *ngIf="userIsAuthenticated"> add recepie </a>
+                    <a class="item" [routerLink]="['/auth/login']" *ngIf="!userIsAuthenticated"> login </a>
+                    <a class="item" [routerLink]="['/auth/signup']" *ngIf="!userIsAuthenticated"> signup </a>
+                    <a class="item" [routerLink]="['/auth/login']" *ngIf="userIsAuthenticated" (click)="onLogout()"> signout </a>
+                </div>
+            
+                <a class="icon" (click)="toggleMenu('header-items')">
+                    <i class="fa fa-bars"></i>
+                </a>
+
+                <span *ngIf="userName" class="user-name"> User name: {{ userName }} </span>
+            </div>
+        </nav>
+    </ng-template>
+</div>
