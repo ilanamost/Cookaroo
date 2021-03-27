@@ -135,7 +135,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       }, error => {
         this.router.navigate(["/"]);
         this.isLoading = false;
-      });;
+      });
     } else {
       // send a request to update an existing recipe in the backend
       this.recipeService.updateRecipe(
