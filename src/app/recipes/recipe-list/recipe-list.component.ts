@@ -4,7 +4,7 @@ import { Recipe } from '../models/recipe.model';
 import { Subscription } from 'rxjs/internal/Subscription';
 import swal from 'sweetalert2';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { LOADER_TIMEOUT } from 'src/app/shared/classes/utils';
+import { LOADER_TIMEOUT, SPECIAL_CHAR_REGEX } from 'src/app/shared/classes/utils';
 
 @Component({
   selector: 'recipe-list',
@@ -184,6 +184,9 @@ export class RecipeListComponent implements OnInit {
    */
   public serachValue(event: Event) {
     this.filter = (<HTMLInputElement>event.target).value;
+
+    // add double slash before each special character 
+    this.filter = this.filter.replace(SPECIAL_CHAR_REGEX, '\\$&');
 
     // reset the current page values
     this.resetCurrentPage();
