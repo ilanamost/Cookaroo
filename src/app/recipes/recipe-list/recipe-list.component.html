@@ -3,7 +3,7 @@
 <div class="list-container" [ngClass]="{'hidden': isLoading }"> 
    <div class="paginator-wrapper">
       <mat-paginator [length]="totalRecipes" [pageSize]="recipesPerPage" [pageSizeOptions]="pageSizeOptions"
-         (page)="onChangedPage($event)" *ngIf="recipes.length > 0"></mat-paginator>
+         (page)="onChangedPage($event)"></mat-paginator>
    </div>
 
    <div class="search-container"> 
