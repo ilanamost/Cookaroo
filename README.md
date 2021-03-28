@@ -8,9 +8,6 @@ Instructions:
 4. Run the backend using: 'npm start'.
 5. Open the browser to http://localhost:4200
 
-Run the site at:
-https://cookaroo.herokuapp.com/
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
 ## Development server
