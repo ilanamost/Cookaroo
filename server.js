@@ -13,11 +13,11 @@ function requireHTTPS(req, res, next) {
 app.use(requireHTTPS);
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/cookaroo'));
+app.use(express.static(__dirname + '/dist/Cookaroo'));
 
 // wait for a request to any path and redirect all of the requests to index.html
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/dist/cookaroo/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/Cookaroo/index.html'));
 });
 
 // listen for requests at the PORT specified by env variables or the default Heroku port, which is 8080
